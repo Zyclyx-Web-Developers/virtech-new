@@ -374,7 +374,7 @@
   return false;
 
     }
-    if(contactForm.lasttname.value=="")
+    if(contactForm.lastname.value=="")
     {
       Swal.fire({
   icon: 'error',
@@ -382,11 +382,11 @@
   text: 'Please Enter Last Name!'
   
 })
-   contactForm.lasttname.focus();
+   contactForm.lastname.focus();
    return false;
     }
     re=/[0-9]/;
-    if(re.test(contactForm.lasttname.value))
+    if(re.test(contactForm.lastname.value))
     {
       Swal.fire({
   icon: 'error',
@@ -394,7 +394,7 @@
   text: 'Last Name cannot be in numbers!'
   
 })
-contactForm.lasttname.focus();
+contactForm.lastname.focus();
 return false;
     }
     if(contactForm.email.value=="")
@@ -455,6 +455,45 @@ Swal.fire({
 contactForm.message.focus();
 return false;
   }
+  if(contactForm.resume.value=="")
+  {
+    Swal.fire({
+      icon:'error',
+      title:'Oops...',
+      text:'Please Upload Resume!'
+    })
+    contactForm.resume.focus();
+    return false;
+  }
+  var fup = document.getElementById('Resume');
+var fileName = fup.value;
+var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+if( ext == "dot" || ext == "dotm" || ext == "dotx" || ext == "docm" || ext == "docx" || ext == "doc" || ext == "pdf")
+{
+  
+} 
+else
+{
+  Swal.fire({
+      icon:'error',
+      title:'Oops...',
+      text:'Please Upload doc and pdf files only!'
+    })
+    fup.focus();
+    return false;
+}
+var oFile = document.getElementById("Resume").files[0];
+
+            if (oFile.size > 5097152) // 5 mb for bytes.
+            {
+              Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Please upload file size must be under 2mb!'
+  
+}) 
+                return false;
+            }
     return true;
   } 
 
@@ -683,7 +722,7 @@ return false;
                 <div class="col">
                   <div class="form-group">
                     <label for="pwd"> Last Name:</label> 
-                    <input type="text" class="form-control" name="lasttname" id="lasttname"autocomplete="off"> 
+                    <input type="text" class="form-control" name="lastname" id="lastname"autocomplete="off"> 
                   </div>
                 </div>
               </div>
@@ -707,14 +746,14 @@ return false;
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Upload Resume</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="resume">
+                            <label for="Resume">Upload Resume</label>
+                            <input type="file" class="form-control-file" id="Resume" name="resume">
                           </div>
                     </div>
 
                 <div class="col-6">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
-                <text area class="form-control" id="message"  name="message" autocomplete="off"></text area>
+                <textarea class="form-control" id="message"  name="message" autocomplete="off"></textarea>
               </div>
               </div>
 
