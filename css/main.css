@@ -298,7 +298,8 @@ text-align: center;
   border: none;
   background-color: transparent;
   transition: all .2s ease-in;
-  min-height: 175px;
+  min-height: 215px;
+  text-align: center;
 }
 
 .service-cards .card-body{
@@ -493,6 +494,13 @@ overflow: hidden;
   transform: skew(200.25deg);
   
 }
+.service-cards a:hover{
+  text-decoration: none !important;
+  color: black !important;
+  border: none !important;
+  outline: none !important;
+}
+
 /* .careers-banner::after{
 position: absolute;
 content: '';
@@ -521,8 +529,9 @@ background-color: rgba(0, 144, 166,0.85);
 
 /* contact banner */
 
-/* footer  */
- 
+
+
+/* footer  */ 
 .footer a,.footer p{  
  font-size: 1.05rem;   
   color:#333; 
@@ -547,6 +556,8 @@ font-weight: 600;
   width: 120px;  
 }
 /* Footer Follow Us */
+
+
 .footer .social-network li{
   list-style-type: none;
   }
