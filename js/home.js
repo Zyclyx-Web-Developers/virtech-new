@@ -52,10 +52,10 @@ $('.industry').on('mouseenter',function(){
     let index = $(this).attr('data-index');
   $(`#ind-content-${index}`).addClass('active');
   //gsap.from(`#ind-content-${index}`,{duration:1,opacity:0.5,y:100})     
-  border.to(`#${indID} .top-line`,{width:'100%',duration:0.2})
-  border.to(`#${indID} .right-line`,{height:'100%',duration:0.2})
-  border.to(`#${indID} .bottom-line`,{width:'100%',duration:0.2})
-  border.to(`#${indID} .left-line`,{height:'100%',duration:0.2}) 
+  // border.to(`#${indID} .top-line`,{width:'100%',duration:0.2})
+  // border.to(`#${indID} .right-line`,{height:'100%',duration:0.2})
+  // border.to(`#${indID} .bottom-line`,{width:'100%',duration:0.2})
+  // border.to(`#${indID} .left-line`,{height:'100%',duration:0.2}) 
   gsap.from(`#ind-content-${index}`,{duration:1,opacity:0.5,y:100}) 
 })
 $('.industry').on('mouseleave',function(){
@@ -63,9 +63,24 @@ $('.industry').on('mouseleave',function(){
   let index = $(this).attr('data-index');
   //$(this).toggleClass('active')
   //$(`#ind-content-${index}`).css('display','none')  
-  border.to(`#${indID} .left-line`,{height:'0%',duration:0.1})
-  border.to(`#${indID} .bottom-line`,{width:'0%',duration:0.1})
-  border.to(`#${indID} .right-line`,{height:'0%',duration:0.1})
-  border.to(`#${indID} .top-line`,{width:'0%',duration:0.1})  
+  // border.to(`#${indID} .left-line`,{height:'0%',duration:0.1})
+  // border.to(`#${indID} .bottom-line`,{width:'0%',duration:0.1})
+  // border.to(`#${indID} .right-line`,{height:'0%',duration:0.1})
+  // border.to(`#${indID} .top-line`,{width:'0%',duration:0.1})  
 })
  
+
+
+$("#industryOuter .card").each(createIndHover);
+function createIndHover(i, element) {
+  let border = gsap.timeline({duration:0.2});      
+  border.to($(this).find('.top-line'),{width:'100%',duration:0.2})
+  border.to($(this).find('.right-line'),{height:'100%',duration:0.2})
+  border.to($(this).find('.bottom-line'),{width:'100%',duration:0.2})
+  border.to($(this).find('.left-line'),{height:'100%',duration:0.2})   
+  $(element).hover(doIt);  
+  function doIt() {
+     border.reversed() ? border.play() : border.reverse();     
+  }
+  border.reverse();
+}
